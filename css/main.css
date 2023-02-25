@@ -20,9 +20,54 @@
   src: url(../fonts/outfit-regular.woff2);
 }
 
+h1, h2, h3, h4, h5, h6 {
+  font-family: outfit-c;
+}
+
 body {
-  color: #fff;
+  color: #fafafa;
+  font-family: raleway-c;
   
   background-image: url('../img/background.jpg');
   background-size: 50px;
+  overflow-x: hidden;
+}
+
+.container {
+  padding: 0 10vw;
+}
+
+.hero {
+  position: absolute;
+  top: 8vh;
+  left: 37vw;
+  
+  width: calc(var(--index) * 36);
+
+  z-index: -1;
+}
+
+.main-header {
+  height: 100vh;
+}
+
+.main-title {
+  position: absolute;
+  bottom: 12vh;
+
+  width: min-content;
+  line-height: 0.9;
+
+  font-size: calc(var(--index) * 8);
+}
+
+.gallery {
+  display: flex;
+}
+
+.gallery > * {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 }
