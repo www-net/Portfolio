@@ -6,9 +6,12 @@
 
 :root {
   --index: calc(1vw + 1vh);
+  --gallery-gap: calc(var(--index) * 10);
   --header-color: #f4efec;
   --text-color: #cdc6c3;
-  --gallery-gap: calc(var(--index) * 10);
+  --hover-color: tomato;
+  --icon-color: #ab71e0;
+  --icon-color--30: #ab71e030;
 }
 
 @font-face {
@@ -21,20 +24,32 @@
   src: url(../fonts/outfit-regular.woff2);
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: outfit-c;
 }
 
-/* will-change*/
+img {
+  height: auto;
+  max-width: 100%;
+}
 
-.content, .hero, .main-header, .gallery > * {
+/* will-change*/
+.content,
+.hero,
+.main-header,
+.gallery>* {
   will-change: transform;
 }
 
 body {
   color: #fafafa;
   font-family: raleway-c;
-  
+
   background-image: url('../img/background.jpg');
   background-size: 50px;
   overflow-x: hidden;
@@ -48,7 +63,7 @@ body {
   position: absolute;
   top: 8vh;
   left: 37vw;
-  
+
   width: calc(var(--index) * 36);
 
   z-index: -1;
@@ -74,7 +89,7 @@ body {
   padding: calc(var(--index) * 8) 0;
 }
 
-.gallery > * {
+.gallery>* {
   flex-grow: 1;
   display: flex;
   align-items: center;
@@ -90,8 +105,76 @@ body {
   max-height: 90vh;
   margin-bottom: calc(var(--gallery-gap) * 0.7);
 
-  border-radius: 8px;
+  text-align: center;
 }
+
+.gallery__link {
+  display: block;
+
+  text-decoration: none;
+  color: var(--text-color);
+
+  margin-bottom: calc(var(--index) * 0.3);
+}
+
+.gallery__img {
+  margin-bottom: calc(var(--index) * 0.3);
+
+  border-radius: 8px;
+
+  transition: all 0.7s;
+}
+
+.gallery__link:hover .gallery__img {
+  box-shadow: 0 0 100px -50px var(--hover-color);
+}
+
+.gallery__github {
+  position: relative;
+
+  display: inline-block;
+  padding: calc(var(--index) * 0.5);
+  text-decoration: none;
+
+  transition: all 0.7s;
+}
+
+.github::before {
+  content: '';
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+
+  min-width: calc(var(--index) * 15);
+  height: 22px;
+  
+  background: radial-gradient(var(--icon-color--30), transparent 70%);
+  border-radius: 50%;
+  opacity: 0;
+  
+  transform: translate(-50%, -50%);
+  transition: all 1s;
+}
+
+.github:hover::before {
+  opacity: 1;
+}
+
+.github__icon {
+  fill: var(--icon-color);
+  border-radius: 50%;
+
+  background-image: url(../img/background.jpg);
+  background-repeat: no-repeat;
+}
+
+/* 
+.gallery__github:hover .github__icon{
+  box-shadow: 0 0px 30px var(--icon-color);
+} */
+
 
 .gallery__right .gallery__item {
   margin: 0;
@@ -100,13 +183,13 @@ body {
 
 .text-block {
   position: relative;
-  
+
   color: var(--text-color);
 }
 
 .text-block__h {
   margin-bottom: 1.5rem;
-  
+
   font-size: 2rem;
   line-height: 2.4rem;
   color: var(--header-color);
