@@ -30,7 +30,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: outfit-c;
+  font-family: outfit-c, sans-serif;
 }
 
 img {
@@ -48,7 +48,7 @@ img {
 
 body {
   color: #fafafa;
-  font-family: raleway-c;
+  font-family: raleway-c, sans-serif;
 
   background-image: url('../img/background.jpg');
   background-size: 50px;
@@ -80,13 +80,19 @@ body {
   width: min-content;
   line-height: 0.9;
 
-  font-size: calc(var(--index) * 8);
+  font-size: calc(var(--index) * 6);
 }
 
 .gallery {
   display: flex;
 
   padding: calc(var(--index) * 8) 0;
+}
+
+@media (max-width: 1000px) {
+  .gallery {
+    display: block;
+  }
 }
 
 .gallery>* {
@@ -118,15 +124,20 @@ body {
 }
 
 .gallery__img {
+  max-height: calc(var(--index) * 32);
   margin-bottom: calc(var(--index) * 0.3);
 
   border-radius: 8px;
 
-  transition: all 0.7s;
+  transition: all 0.5s;
 }
 
 .gallery__link:hover .gallery__img {
-  box-shadow: 0 0 100px -50px var(--hover-color);
+  box-shadow: 0 0 70px -30px var(--hover-color);
+}
+
+.gallery__description {
+  font-size: calc(var(--index) * 0.8)
 }
 
 .gallery__github {
@@ -135,8 +146,6 @@ body {
   display: inline-block;
   padding: calc(var(--index) * 0.5);
   text-decoration: none;
-
-  transition: all 0.7s;
 }
 
 .github::before {
@@ -155,7 +164,7 @@ body {
   opacity: 0;
   
   transform: translate(-50%, -50%);
-  transition: all 1s;
+  transition: all 0.5s;
 }
 
 .github:hover::before {
@@ -169,12 +178,6 @@ body {
   background-image: url(../img/background.jpg);
   background-repeat: no-repeat;
 }
-
-/* 
-.gallery__github:hover .github__icon{
-  box-shadow: 0 0px 30px var(--icon-color);
-} */
-
 
 .gallery__right .gallery__item {
   margin: 0;
@@ -190,11 +193,13 @@ body {
 .text-block__h {
   margin-bottom: 1.5rem;
 
-  font-size: 2rem;
+  font-size: calc(var(--index) * 1.5);
   line-height: 2.4rem;
   color: var(--header-color);
 }
 
 .text-block__p {
   line-height: 1.75;
+
+  font-size: calc(var(--index));
 }
